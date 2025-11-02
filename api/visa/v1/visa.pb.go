@@ -7,6 +7,7 @@
 package v1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -113,13 +114,13 @@ var File_api_visa_v1_visa_proto protoreflect.FileDescriptor
 
 const file_api_visa_v1_visa_proto_rawDesc = "" +
 	"\n" +
-	"\x16api/visa/v1/visa.proto\x12\vapi.visa.v1\"#\n" +
+	"\x16api/visa/v1/visa.proto\x12\vapi.visa.v1\x1a\x1cgoogle/api/annotations.proto\"#\n" +
 	"\vEchoRequest\x12\x14\n" +
 	"\x05value\x18\x01 \x01(\tR\x05value\"$\n" +
 	"\fEchoResponse\x12\x14\n" +
-	"\x05value\x18\x01 \x01(\tR\x05value2J\n" +
-	"\vVisaService\x12;\n" +
-	"\x04Echo\x12\x18.api.visa.v1.EchoRequest\x1a\x19.api.visa.v1.EchoResponseB,Z*github.com/forgoes/proto-go/api/visa/v1;v1b\x06proto3"
+	"\x05value\x18\x01 \x01(\tR\x05value2c\n" +
+	"\vVisaService\x12T\n" +
+	"\x04Echo\x12\x18.api.visa.v1.EchoRequest\x1a\x19.api.visa.v1.EchoResponse\"\x17\x82\xd3\xe4\x93\x02\x11:\x01*\"\f/rpc/v1/echoB,Z*github.com/forgoes/proto-go/api/visa/v1;v1b\x06proto3"
 
 var (
 	file_api_visa_v1_visa_proto_rawDescOnce sync.Once
