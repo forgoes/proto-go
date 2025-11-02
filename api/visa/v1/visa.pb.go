@@ -4,7 +4,7 @@
 // 	protoc        (unknown)
 // source: api/visa/v1/visa.proto
 
-package visav1
+package v1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -21,31 +21,27 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type Visa struct {
+type EchoRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	HolderName    string                 `protobuf:"bytes,2,opt,name=holder_name,json=holderName,proto3" json:"holder_name,omitempty"`
-	Country       string                 `protobuf:"bytes,3,opt,name=country,proto3" json:"country,omitempty"`
-	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
-	Status        string                 `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
+	Value         string                 `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Visa) Reset() {
-	*x = Visa{}
+func (x *EchoRequest) Reset() {
+	*x = EchoRequest{}
 	mi := &file_api_visa_v1_visa_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Visa) String() string {
+func (x *EchoRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Visa) ProtoMessage() {}
+func (*EchoRequest) ProtoMessage() {}
 
-func (x *Visa) ProtoReflect() protoreflect.Message {
+func (x *EchoRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_api_visa_v1_visa_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -57,67 +53,39 @@ func (x *Visa) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Visa.ProtoReflect.Descriptor instead.
-func (*Visa) Descriptor() ([]byte, []int) {
+// Deprecated: Use EchoRequest.ProtoReflect.Descriptor instead.
+func (*EchoRequest) Descriptor() ([]byte, []int) {
 	return file_api_visa_v1_visa_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Visa) GetId() string {
+func (x *EchoRequest) GetValue() string {
 	if x != nil {
-		return x.Id
+		return x.Value
 	}
 	return ""
 }
 
-func (x *Visa) GetHolderName() string {
-	if x != nil {
-		return x.HolderName
-	}
-	return ""
-}
-
-func (x *Visa) GetCountry() string {
-	if x != nil {
-		return x.Country
-	}
-	return ""
-}
-
-func (x *Visa) GetType() string {
-	if x != nil {
-		return x.Type
-	}
-	return ""
-}
-
-func (x *Visa) GetStatus() string {
-	if x != nil {
-		return x.Status
-	}
-	return ""
-}
-
-type GetVisaRequest struct {
+type EchoResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Value         string                 `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetVisaRequest) Reset() {
-	*x = GetVisaRequest{}
+func (x *EchoResponse) Reset() {
+	*x = EchoResponse{}
 	mi := &file_api_visa_v1_visa_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetVisaRequest) String() string {
+func (x *EchoResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetVisaRequest) ProtoMessage() {}
+func (*EchoResponse) ProtoMessage() {}
 
-func (x *GetVisaRequest) ProtoReflect() protoreflect.Message {
+func (x *EchoResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_api_visa_v1_visa_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -129,193 +97,29 @@ func (x *GetVisaRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetVisaRequest.ProtoReflect.Descriptor instead.
-func (*GetVisaRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use EchoResponse.ProtoReflect.Descriptor instead.
+func (*EchoResponse) Descriptor() ([]byte, []int) {
 	return file_api_visa_v1_visa_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetVisaRequest) GetId() string {
+func (x *EchoResponse) GetValue() string {
 	if x != nil {
-		return x.Id
+		return x.Value
 	}
 	return ""
-}
-
-type GetVisaResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Visa          *Visa                  `protobuf:"bytes,1,opt,name=visa,proto3" json:"visa,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetVisaResponse) Reset() {
-	*x = GetVisaResponse{}
-	mi := &file_api_visa_v1_visa_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetVisaResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetVisaResponse) ProtoMessage() {}
-
-func (x *GetVisaResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_visa_v1_visa_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetVisaResponse.ProtoReflect.Descriptor instead.
-func (*GetVisaResponse) Descriptor() ([]byte, []int) {
-	return file_api_visa_v1_visa_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *GetVisaResponse) GetVisa() *Visa {
-	if x != nil {
-		return x.Visa
-	}
-	return nil
-}
-
-type CreateVisaRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	HolderName    string                 `protobuf:"bytes,1,opt,name=holder_name,json=holderName,proto3" json:"holder_name,omitempty"`
-	Country       string                 `protobuf:"bytes,2,opt,name=country,proto3" json:"country,omitempty"`
-	Type          string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateVisaRequest) Reset() {
-	*x = CreateVisaRequest{}
-	mi := &file_api_visa_v1_visa_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateVisaRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateVisaRequest) ProtoMessage() {}
-
-func (x *CreateVisaRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_visa_v1_visa_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateVisaRequest.ProtoReflect.Descriptor instead.
-func (*CreateVisaRequest) Descriptor() ([]byte, []int) {
-	return file_api_visa_v1_visa_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *CreateVisaRequest) GetHolderName() string {
-	if x != nil {
-		return x.HolderName
-	}
-	return ""
-}
-
-func (x *CreateVisaRequest) GetCountry() string {
-	if x != nil {
-		return x.Country
-	}
-	return ""
-}
-
-func (x *CreateVisaRequest) GetType() string {
-	if x != nil {
-		return x.Type
-	}
-	return ""
-}
-
-type CreateVisaResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Visa          *Visa                  `protobuf:"bytes,1,opt,name=visa,proto3" json:"visa,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateVisaResponse) Reset() {
-	*x = CreateVisaResponse{}
-	mi := &file_api_visa_v1_visa_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateVisaResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateVisaResponse) ProtoMessage() {}
-
-func (x *CreateVisaResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_visa_v1_visa_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateVisaResponse.ProtoReflect.Descriptor instead.
-func (*CreateVisaResponse) Descriptor() ([]byte, []int) {
-	return file_api_visa_v1_visa_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *CreateVisaResponse) GetVisa() *Visa {
-	if x != nil {
-		return x.Visa
-	}
-	return nil
 }
 
 var File_api_visa_v1_visa_proto protoreflect.FileDescriptor
 
 const file_api_visa_v1_visa_proto_rawDesc = "" +
 	"\n" +
-	"\x16api/visa/v1/visa.proto\x12\vapi.visa.v1\"}\n" +
-	"\x04Visa\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
-	"\vholder_name\x18\x02 \x01(\tR\n" +
-	"holderName\x12\x18\n" +
-	"\acountry\x18\x03 \x01(\tR\acountry\x12\x12\n" +
-	"\x04type\x18\x04 \x01(\tR\x04type\x12\x16\n" +
-	"\x06status\x18\x05 \x01(\tR\x06status\" \n" +
-	"\x0eGetVisaRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"8\n" +
-	"\x0fGetVisaResponse\x12%\n" +
-	"\x04visa\x18\x01 \x01(\v2\x11.api.visa.v1.VisaR\x04visa\"b\n" +
-	"\x11CreateVisaRequest\x12\x1f\n" +
-	"\vholder_name\x18\x01 \x01(\tR\n" +
-	"holderName\x12\x18\n" +
-	"\acountry\x18\x02 \x01(\tR\acountry\x12\x12\n" +
-	"\x04type\x18\x03 \x01(\tR\x04type\";\n" +
-	"\x12CreateVisaResponse\x12%\n" +
-	"\x04visa\x18\x01 \x01(\v2\x11.api.visa.v1.VisaR\x04visa2\xa2\x01\n" +
-	"\vVisaService\x12D\n" +
-	"\aGetVisa\x12\x1b.api.visa.v1.GetVisaRequest\x1a\x1c.api.visa.v1.GetVisaResponse\x12M\n" +
-	"\n" +
-	"CreateVisa\x12\x1e.api.visa.v1.CreateVisaRequest\x1a\x1f.api.visa.v1.CreateVisaResponseB/Z-example.com/project/gen/go/api/visa/v1;visav1b\x06proto3"
+	"\x16api/visa/v1/visa.proto\x12\vapi.visa.v1\"#\n" +
+	"\vEchoRequest\x12\x14\n" +
+	"\x05value\x18\x01 \x01(\tR\x05value\"$\n" +
+	"\fEchoResponse\x12\x14\n" +
+	"\x05value\x18\x01 \x01(\tR\x05value2J\n" +
+	"\vVisaService\x12;\n" +
+	"\x04Echo\x12\x18.api.visa.v1.EchoRequest\x1a\x19.api.visa.v1.EchoResponseB,Z*github.com/forgoes/proto-go/api/visa/v1;v1b\x06proto3"
 
 var (
 	file_api_visa_v1_visa_proto_rawDescOnce sync.Once
@@ -329,26 +133,19 @@ func file_api_visa_v1_visa_proto_rawDescGZIP() []byte {
 	return file_api_visa_v1_visa_proto_rawDescData
 }
 
-var file_api_visa_v1_visa_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_api_visa_v1_visa_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_api_visa_v1_visa_proto_goTypes = []any{
-	(*Visa)(nil),               // 0: api.visa.v1.Visa
-	(*GetVisaRequest)(nil),     // 1: api.visa.v1.GetVisaRequest
-	(*GetVisaResponse)(nil),    // 2: api.visa.v1.GetVisaResponse
-	(*CreateVisaRequest)(nil),  // 3: api.visa.v1.CreateVisaRequest
-	(*CreateVisaResponse)(nil), // 4: api.visa.v1.CreateVisaResponse
+	(*EchoRequest)(nil),  // 0: api.visa.v1.EchoRequest
+	(*EchoResponse)(nil), // 1: api.visa.v1.EchoResponse
 }
 var file_api_visa_v1_visa_proto_depIdxs = []int32{
-	0, // 0: api.visa.v1.GetVisaResponse.visa:type_name -> api.visa.v1.Visa
-	0, // 1: api.visa.v1.CreateVisaResponse.visa:type_name -> api.visa.v1.Visa
-	1, // 2: api.visa.v1.VisaService.GetVisa:input_type -> api.visa.v1.GetVisaRequest
-	3, // 3: api.visa.v1.VisaService.CreateVisa:input_type -> api.visa.v1.CreateVisaRequest
-	2, // 4: api.visa.v1.VisaService.GetVisa:output_type -> api.visa.v1.GetVisaResponse
-	4, // 5: api.visa.v1.VisaService.CreateVisa:output_type -> api.visa.v1.CreateVisaResponse
-	4, // [4:6] is the sub-list for method output_type
-	2, // [2:4] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	0, // 0: api.visa.v1.VisaService.Echo:input_type -> api.visa.v1.EchoRequest
+	1, // 1: api.visa.v1.VisaService.Echo:output_type -> api.visa.v1.EchoResponse
+	1, // [1:2] is the sub-list for method output_type
+	0, // [0:1] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_api_visa_v1_visa_proto_init() }
@@ -362,7 +159,7 @@ func file_api_visa_v1_visa_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_visa_v1_visa_proto_rawDesc), len(file_api_visa_v1_visa_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

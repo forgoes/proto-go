@@ -4,7 +4,7 @@
 // - protoc             (unknown)
 // source: api/visa/v1/visa.proto
 
-package visav1
+package v1
 
 import (
 	context "context"
@@ -19,16 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	VisaService_GetVisa_FullMethodName    = "/api.visa.v1.VisaService/GetVisa"
-	VisaService_CreateVisa_FullMethodName = "/api.visa.v1.VisaService/CreateVisa"
+	VisaService_Echo_FullMethodName = "/api.visa.v1.VisaService/Echo"
 )
 
 // VisaServiceClient is the client API for VisaService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type VisaServiceClient interface {
-	GetVisa(ctx context.Context, in *GetVisaRequest, opts ...grpc.CallOption) (*GetVisaResponse, error)
-	CreateVisa(ctx context.Context, in *CreateVisaRequest, opts ...grpc.CallOption) (*CreateVisaResponse, error)
+	Echo(ctx context.Context, in *EchoRequest, opts ...grpc.CallOption) (*EchoResponse, error)
 }
 
 type visaServiceClient struct {
@@ -39,20 +37,10 @@ func NewVisaServiceClient(cc grpc.ClientConnInterface) VisaServiceClient {
 	return &visaServiceClient{cc}
 }
 
-func (c *visaServiceClient) GetVisa(ctx context.Context, in *GetVisaRequest, opts ...grpc.CallOption) (*GetVisaResponse, error) {
+func (c *visaServiceClient) Echo(ctx context.Context, in *EchoRequest, opts ...grpc.CallOption) (*EchoResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetVisaResponse)
-	err := c.cc.Invoke(ctx, VisaService_GetVisa_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *visaServiceClient) CreateVisa(ctx context.Context, in *CreateVisaRequest, opts ...grpc.CallOption) (*CreateVisaResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateVisaResponse)
-	err := c.cc.Invoke(ctx, VisaService_CreateVisa_FullMethodName, in, out, cOpts...)
+	out := new(EchoResponse)
+	err := c.cc.Invoke(ctx, VisaService_Echo_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -63,8 +51,7 @@ func (c *visaServiceClient) CreateVisa(ctx context.Context, in *CreateVisaReques
 // All implementations must embed UnimplementedVisaServiceServer
 // for forward compatibility.
 type VisaServiceServer interface {
-	GetVisa(context.Context, *GetVisaRequest) (*GetVisaResponse, error)
-	CreateVisa(context.Context, *CreateVisaRequest) (*CreateVisaResponse, error)
+	Echo(context.Context, *EchoRequest) (*EchoResponse, error)
 	mustEmbedUnimplementedVisaServiceServer()
 }
 
@@ -75,11 +62,8 @@ type VisaServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedVisaServiceServer struct{}
 
-func (UnimplementedVisaServiceServer) GetVisa(context.Context, *GetVisaRequest) (*GetVisaResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetVisa not implemented")
-}
-func (UnimplementedVisaServiceServer) CreateVisa(context.Context, *CreateVisaRequest) (*CreateVisaResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateVisa not implemented")
+func (UnimplementedVisaServiceServer) Echo(context.Context, *EchoRequest) (*EchoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Echo not implemented")
 }
 func (UnimplementedVisaServiceServer) mustEmbedUnimplementedVisaServiceServer() {}
 func (UnimplementedVisaServiceServer) testEmbeddedByValue()                     {}
@@ -102,38 +86,20 @@ func RegisterVisaServiceServer(s grpc.ServiceRegistrar, srv VisaServiceServer) {
 	s.RegisterService(&VisaService_ServiceDesc, srv)
 }
 
-func _VisaService_GetVisa_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetVisaRequest)
+func _VisaService_Echo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EchoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(VisaServiceServer).GetVisa(ctx, in)
+		return srv.(VisaServiceServer).Echo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: VisaService_GetVisa_FullMethodName,
+		FullMethod: VisaService_Echo_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VisaServiceServer).GetVisa(ctx, req.(*GetVisaRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _VisaService_CreateVisa_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateVisaRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(VisaServiceServer).CreateVisa(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: VisaService_CreateVisa_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(VisaServiceServer).CreateVisa(ctx, req.(*CreateVisaRequest))
+		return srv.(VisaServiceServer).Echo(ctx, req.(*EchoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -146,12 +112,8 @@ var VisaService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*VisaServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetVisa",
-			Handler:    _VisaService_GetVisa_Handler,
-		},
-		{
-			MethodName: "CreateVisa",
-			Handler:    _VisaService_CreateVisa_Handler,
+			MethodName: "Echo",
+			Handler:    _VisaService_Echo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
