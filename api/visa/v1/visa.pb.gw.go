@@ -74,7 +74,7 @@ func RegisterVisaServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/api.visa.v1.VisaService/Echo", runtime.WithHTTPPathPattern("/rpc/v1/echo1"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/api.visa.v1.VisaService/Echo", runtime.WithHTTPPathPattern("/rpc/v1/echo"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -132,7 +132,7 @@ func RegisterVisaServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/api.visa.v1.VisaService/Echo", runtime.WithHTTPPathPattern("/rpc/v1/echo1"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/api.visa.v1.VisaService/Echo", runtime.WithHTTPPathPattern("/rpc/v1/echo"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -149,7 +149,7 @@ func RegisterVisaServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 }
 
 var (
-	pattern_VisaService_Echo_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"rpc", "v1", "echo1"}, ""))
+	pattern_VisaService_Echo_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"rpc", "v1", "echo"}, ""))
 )
 
 var (
